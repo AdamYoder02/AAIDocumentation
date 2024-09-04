@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cckfdb4eaci4b"]
+
+[ext_resource type="Script" path="res://player/player_airpump.gd" id="1_tlvg2"]
+[ext_resource type="Texture2D" uid="uid://xcgeak8bgkyw" path="res://Assets/Paddle.png" id="2_x8s55"]
+[ext_resource type="Texture2D" uid="uid://du1ja2up0s6u7" path="res://Assets/bubble.webp" id="3_3h8wh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g7pp5"]
+radius = 15.0
+height = 130.0
+
+[sub_resource type="Curve" id="Curve_2ohdx"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2yh4k"]
+curve = SubResource("Curve_2ohdx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cllgb"]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+orbit_velocity_min = -0.618
+orbit_velocity_max = 0.637
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_min = 0.01
+scale_max = 0.02
+scale_over_velocity_curve = SubResource("CurveTexture_2yh4k")
+turbulence_noise_strength = 4.4
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(68, 316)
+script = ExtResource("1_tlvg2")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g7pp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x8s55")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 60)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_cllgb")
+texture = ExtResource("3_3h8wh")
+randomness = 0.8
