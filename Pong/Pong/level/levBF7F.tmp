@@ -65,10 +65,9 @@ script = ExtResource("4_1rleo")
 position = Vector2(1315, 345)
 
 [node name="Timer" type="Timer" parent="Ball Handler"]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 script = ExtResource("5_x5pqi")
 
 [connection signal="body_entered" from="Player/PlayerDetection" to="Player" method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="Ball Handler/Timer" to="Ball Handler" method="_on_timer_timeout"]
-[connection signal="timeout" from="Ball Handler/Timer" to="Ball Handler/Timer" method="_on_timeout"]
