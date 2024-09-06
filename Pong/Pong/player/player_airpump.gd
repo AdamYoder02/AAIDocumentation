@@ -30,8 +30,7 @@ func _physics_process(delta):
 		boost += pump_strength * delta
 		velocity.y -= boost * speed * delta
 
-	else:
-		if Input.is_action_just_released("Up"):
+	elif Input.is_action_just_released("Up"):
 			boost = 0
 			air_particles.emitting = false
 	
