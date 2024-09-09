@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnu5oauph2tae"]
+
+[ext_resource type="PackedScene" uid="uid://c10f3hcpsvg2p" path="res://player/player.tscn" id="1_85odk"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_pcv7h"]
+[ext_resource type="PackedScene" uid="uid://mn44tsps2rnx" path="res://player/opponent.tscn" id="2_2abui"]
+[ext_resource type="PackedScene" uid="uid://cf1a13d55avl" path="res://ball/ball.tscn" id="3_b2fku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke5bx"]
+size = Vector2(1336, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kpb0"]
+size = Vector2(94, 718)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_pcv7h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.129412, 0.14902, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_85odk")]
+
+[node name="Opponent" parent="." instance=ExtResource("2_2abui")]
+position = Vector2(1213, 313)
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+position = Vector2(638, -10)
+shape = SubResource("RectangleShape2D_ke5bx")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(11, 740)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+position = Vector2(638, -10)
+shape = SubResource("RectangleShape2D_ke5bx")
+
+[node name="Ball" parent="." instance=ExtResource("3_b2fku")]
+position = Vector2(622, 345)
+
+[node name="Left" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-46, 360)
+shape = SubResource("RectangleShape2D_3kpb0")
+metadata/_edit_group_ = true
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(1373, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(-46, 360)
+shape = SubResource("RectangleShape2D_3kpb0")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Left" to="Ball" method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]

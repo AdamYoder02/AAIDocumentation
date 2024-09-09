@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://UI/Global.gd"
 
 [display]
 

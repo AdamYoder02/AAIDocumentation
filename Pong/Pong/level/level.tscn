@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c10f3hcpsvg2p" path="res://player/player.tscn" id="1_85odk"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_pcv7h"]
-[ext_resource type="PackedScene" uid="uid://cn865boekh2r8" path="res://ui.tscn" id="2_4bp4w"]
+[ext_resource type="PackedScene" uid="uid://cn865boekh2r8" path="res://UI/ui.tscn" id="2_4bp4w"]
 [ext_resource type="PackedScene" uid="uid://cf1a13d55avl" path="res://ball/ball.tscn" id="3_b2fku"]
 [ext_resource type="Script" path="res://level/ball_handler.gd" id="4_1rleo"]
 [ext_resource type="Script" path="res://level/timer.gd" id="5_x5pqi"]
@@ -46,6 +46,8 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_kbaor")
 
 [node name="WallTop" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
@@ -54,6 +56,8 @@ shape = SubResource("RectangleShape2D_ke5bx")
 
 [node name="WallBottom" type="StaticBody2D" parent="."]
 position = Vector2(11, 740)
+collision_layer = 3
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]

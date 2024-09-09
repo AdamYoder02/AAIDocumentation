@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 # detects when a ball hits the paddle
 func _on_player_detection_body_entered(body: Node2D) -> void:
-	if state in [States.IDLE, States.MOVING]:
+	if state in [States.IDLE, States.MOVING] and body.get_parent() == $"../Ball Handler":
 		fish_on_hook = body
 		state = States.CAUGHT
 		#print("FISH DETECTED")
