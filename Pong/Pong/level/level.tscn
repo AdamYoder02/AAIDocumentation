@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnu5oauph2tae"]
+[gd_scene load_steps=10 format=3 uid="uid://dnu5oauph2tae"]
 
 [ext_resource type="PackedScene" uid="uid://c10f3hcpsvg2p" path="res://player/player.tscn" id="1_85odk"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_pcv7h"]
+[ext_resource type="PackedScene" uid="uid://cn865boekh2r8" path="res://ui.tscn" id="2_4bp4w"]
 [ext_resource type="PackedScene" uid="uid://cf1a13d55avl" path="res://ball/ball.tscn" id="3_b2fku"]
 [ext_resource type="Script" path="res://level/ball_handler.gd" id="4_1rleo"]
 [ext_resource type="Script" path="res://level/timer.gd" id="5_x5pqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbaor"]
-size = Vector2(30, 122)
+size = Vector2(30, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke5bx"]
 size = Vector2(1336, 20)
@@ -28,9 +29,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.129412, 0.14902, 1)
 
+[node name="UI" parent="." instance=ExtResource("2_4bp4w")]
+offset_left = 704.0
+offset_top = 10.0
+offset_right = 704.0
+offset_bottom = 10.0
+
 [node name="Player" parent="." instance=ExtResource("1_85odk")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="PlayerDetection" type="Area2D" parent="Player"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerDetection"]
 shape = SubResource("RectangleShape2D_kbaor")
@@ -63,6 +73,7 @@ script = ExtResource("4_1rleo")
 
 [node name="Ball" parent="Ball Handler" instance=ExtResource("3_b2fku")]
 position = Vector2(1315, 345)
+collision_layer = 2
 
 [node name="Timer" type="Timer" parent="Ball Handler"]
 wait_time = 0.3

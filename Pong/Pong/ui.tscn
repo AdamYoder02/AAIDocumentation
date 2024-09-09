@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn865boekh2r8"]
+
+[ext_resource type="FontFile" uid="uid://hiq0cq7pu5yy" path="res://Assets/Fonts/american_captain/American Captain.otf" id="1_4lnv2"]
+[ext_resource type="Script" path="res://score.gd" id="1_svq47"]
+[ext_resource type="Texture2D" uid="uid://d37cff8yy76o" path="res://Assets/Ball.png" id="3_7y2fh"]
+[ext_resource type="Texture2D" uid="uid://dovu8wdcm8wj" path="res://Assets/star.png" id="4_0qjl2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fteeo"]
+font = ExtResource("1_4lnv2")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_mwlxd"]
+font = ExtResource("1_4lnv2")
+font_size = 32
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Score" type="Label" parent="."]
+offset_left = 127.0
+offset_right = 372.0
+offset_bottom = 80.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_fteeo")
+script = ExtResource("1_svq47")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 108.0
+offset_bottom = 143.0
+text = "100
+500
+1000
+10000"
+label_settings = SubResource("LabelSettings_mwlxd")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Label"]
+position = Vector2(-24, 12)
+texture = ExtResource("3_7y2fh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Label"]
+self_modulate = Color(0.5, 0, 1, 1)
+position = Vector2(-24, 46)
+texture = ExtResource("3_7y2fh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Label"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-24, 81)
+texture = ExtResource("3_7y2fh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Label"]
+position = Vector2(-24, 116)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_0qjl2")

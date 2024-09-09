@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1bbl6nv0u8ga"]
+
+[ext_resource type="Script" path="res://player/player3D.gd" id="1_02253"]
+[ext_resource type="PackedScene" uid="uid://r77f7utxjvmc" path="res://player/player_3d.tscn" id="1_ydxrc"]
+
+[sub_resource type="Environment" id="Environment_2f7kx"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_p5ukg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb3fm"]
+size = Vector3(11, 1.05029, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.502266)
+environment = SubResource("Environment_2f7kx")
+attributes = SubResource("CameraAttributesPractical_p5ukg")
+projection = 1
+current = true
+size = 10.0
+
+[node name="Player3D" parent="." instance=ExtResource("1_ydxrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+script = ExtResource("1_02253")
+
+[node name="Top" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31118, 0)
+shape = SubResource("BoxShape3D_qb3fm")
+
+[node name="Bottom" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.62192, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31118, 0)
+shape = SubResource("BoxShape3D_qb3fm")

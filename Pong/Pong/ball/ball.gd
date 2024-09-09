@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@onready var sprite := $Sprite2D
+@onready var star := "res://Assets/star.png"
+
+var disabled = false
+
 var speed: int = 0
 var minimum_speed: int = -400
 
@@ -17,23 +22,66 @@ var wave_width: int = 1
 # starting height
 var wave_offset: int = 345
 
+var ball_size: float = 1
+var ball_rarity: int = 1
+var ball_type: int = 1
+
+var score: int = 100
+
 # make a randomized "seed" for each new ball to randomize movement behavior
 func _ready():
 	var rng := RandomNumberGenerator.new()
 	
-	# -----------------------------------------------------------------------
+	#small chance for rare balls
+	ball_rarity = rng.randi_range(1, 100)
+	
+	# 1 > common  2 > uncommon  3 > rare  4 > legendary
+	if ball_rarity >= 1 and ball_rarity < 50:
+		ball_type = 1
+	elif ball_rarity >= 50 and ball_rarity < 80:
+		ball_type = 2
+	elif ball_rarity >= 80 and ball_rarity < 99:
+		ball_type = 3
+	elif ball_rarity >= 99 and ball_rarity <= 100:
+		ball_type = 4
+
+	
+	# change appearance for each rarity
+	match ball_type:
+		1:
+			pass
+		2:
+			sprite.self_modulate = Color(0.5,0,1)
+			score = 500
+		3:
+			sprite.self_modulate = Color(0,1,0)
+			score = 1000
+		4:
+			var img = Image.new()
+			img.load(star)
+			sprite.texture = ImageTexture.create_from_image(img)
+			sprite.scale.x = 0.25
+			sprite.scale.y = 0.25
+			score = 10000
+		
+	
+	# randomize ball size
+	ball_size = rng.randf_range(0.5, 1)
+
+	var ball_size_vector := Vector2.ZERO
+	ball_size_vector.x = ball_size
+	ball_size_vector.y = ball_size
+	scale = ball_size_vector
+	
 	# randomize wave height
 	wave_height = rng.randi_range(200,300)
 
-	# -----------------------------------------------------------------------
 	# randomize radians start position
 	radians = rng.randf_range(-1,1) * PI
 	
-	# -----------------------------------------------------------------------
 	# randomize speed
 	speed = rng.randi_range(-600,-400)
 	
-	# ----------------------------------------------------------------------
 	# randomize difficulty
 	difficulty = rng.randf_range(0.2,1)
 	
@@ -66,6 +114,10 @@ func _radians_to_position(radians_input) -> float:
 
 
 func _process(delta):
+	#turn off movement when caught
+	if disabled:
+		return
+	
 	if Input.is_action_just_pressed("Reset"):
 		position.x = 644
 		position.y = 345

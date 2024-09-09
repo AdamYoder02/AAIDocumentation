@@ -1,28 +1,43 @@
 extends CharacterBody2D
 
+signal state_changed(state)
+
 var speed: float = 400
 var lock_position: float
 
-var mouse_position: Vector2 = Vector2.ZERO
+var fish_on_hook
 
-var fish_on_hook: bool = true
-var fish_caught: bool = false
+# character states
+enum States {IDLE, MOVING, CATCHING, CAUGHT, THROWING}
+# start idle state
+var state: States = States.IDLE
+var is_fish_caught := false
 
 func _ready():
 	lock_position = position.x
-	
-func _input(event):
-	if event is InputEventMouseMotion:
-		mouse_position = event.position
 
-func _process(delta):
-	if Input.is_action_just_pressed("Throw") && fish_on_hook == true:
-		print("Throw fish")
-
-func _physics_process(delta):
-	position.x = lock_position
+func _physics_process(delta: float) -> void:
 	
-	# position.y = mouse_position.y
+	
+	# if fish is caught set state
+	if state == States.CAUGHT:
+		state_changed.emit("caught_animation")
+		#print("CAUGHT")
+	# if paddle is moving set state
+	elif velocity.y == 0 and state in [States.IDLE, States.MOVING]:
+		state = States.IDLE
+		#print("IDLE")
+	elif velocity.y != 0 and state in [States.IDLE, States.MOVING]:
+		state = States.MOVING
+		#print("MOVING")
+	
+	# start throwing fish if it is caught
+	if Input.is_action_just_pressed("Throw") and state == States.CAUGHT:
+		state = States.THROWING
+		state_changed.emit("throwing_animation")
+		# add score when a fish is caught
+		Global.score += fish_on_hook.score
+		
 	
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("Up"):
@@ -30,11 +45,29 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Down"):
 		velocity.y += 1 * speed
 	
-	move_and_slide()
+	if state in [States.IDLE, States.MOVING]:
+		move_and_slide()
+	
+	position.x = lock_position
 
 # detects when a ball hits the paddle
 func _on_player_detection_body_entered(body: Node2D) -> void:
-	body.position.x = position.x
-	body.position.y = position.y
-	body.queue_free()
-	print("Player hits ball")
+	if state in [States.IDLE, States.MOVING]:
+		fish_on_hook = body
+		state = States.CAUGHT
+		#print("FISH DETECTED")
+		body.reparent(self)
+		body.disabled = true
+
+func _delete_ball() -> void:
+	var ball = get_child(get_child_count()-1)
+	ball.queue_free()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "throwing_animation":
+		$Timer.start(0.2)
+		#position.y = 316
+
+
+func _on_timer_timeout() -> void:
+	state = States.IDLE
