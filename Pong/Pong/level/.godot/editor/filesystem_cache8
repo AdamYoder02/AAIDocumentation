@@ -1,0 +1,51 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1726079242
+::res://Assets/::1725857505
+Ball.png::CompressedTexture2D::270315895257302732::1725442565::1725442915::1::::<><>::
+bubble.webp::CompressedTexture2D::8617260648122629188::1725442565::1725442916::1::::<><>::
+Paddle.png::CompressedTexture2D::1618843621264080462::1725442565::1725688814::1::::<><>::
+ping_pong_8bit_beeep.ogg::AudioStreamOggVorbis::5059868350730989268::1725442565::1725442915::1::::<><>::
+ping_pong_8bit_plop.ogg::AudioStreamOggVorbis::689836731598159456::1725442565::1725442915::1::::<><>::
+rubber_ducky.png::CompressedTexture2D::4169479413175850468::1725442565::1725442916::1::::<><>::
+star.png::CompressedTexture2D::240780359592869081::1725857502::1725857505::1::::<><>::
+toy_ship.png::CompressedTexture2D::5689193842462358262::1725442565::1725442915::1::::<><>::
+::res://Assets/Fonts/::1725855286
+::res://Assets/Fonts/american_captain/::1725855288
+American Captain.otf::FontFile::508853175468961872::1725855234::1725855288::1::::<><>::
+American Captain.ttf::FontFile::2995928307811501956::1725855234::1725855288::1::::<><>::
+American Captain.txt::TextFile::-1::1725855234::0::1::::<><>::
+american_captain.PNG::CompressedTexture2D::87487416546945399::1725855234::1725855288::1::::<><>::
+PersonalUseEULA.txt::TextFile::-1::1725855234::0::1::::<><>::
+::res://Assets/obj/::1725688317
+Dolphin.obj::Mesh::1124345568560023177::1725688316::1725688316::1::::<><>::
+Fish1.obj::Mesh::3870982925108584673::1725688316::1725688316::1::::<><>::
+Fish2.obj::Mesh::3440649805030529383::1725688316::1725688316::1::::<><>::
+Fish3.obj::Mesh::7971164937816954598::1725688316::1725688317::1::::<><>::
+Manta ray.obj::Mesh::2570650183440488639::1725688316::1725688317::1::::<><>::
+Shark.obj::Mesh::2159257322586959334::1725688316::1725688317::1::::<><>::
+Whale.obj::Mesh::6320617461615289670::1725688316::1725688317::1::::<><>::
+::res://ball/::1725910955
+ball.gd::GDScript::-1::1725859292::0::1::::<>CharacterBody2D<>::
+ball.tscn::PackedScene::152279626897495301::1725910955::0::1::::<><>::uid://d37cff8yy76o::::res://Assets/Ball.png<>res://ball/ball.gd
+::res://level/::1725910955
+ball_handler.gd::GDScript::-1::1725662312::0::1::::<>Node<>::
+leve3d.tscn::PackedScene::4213477006056411744::1725689626::0::1::::<><>::res://player/player3D.gd<>uid://r77f7utxjvmc::::res://player/player_3d.tscn
+level.gd::GDScript::-1::1725854355::0::1::::<>Node<>::
+level.tscn::PackedScene::8114851115940639352::1725910955::0::1::::<><>::uid://c10f3hcpsvg2p::::res://player/player.tscn<>res://level/level.gd<>uid://cn865boekh2r8::::res://UI/ui.tscn<>uid://cf1a13d55avl::::res://ball/ball.tscn<>res://level/ball_handler.gd<>res://level/timer.gd
+level_airpump.tscn::PackedScene::3596773381857814551::1725910955::0::1::::<><>::res://level/level.gd<>uid://cckfdb4eaci4b::::res://player/player_airpump.tscn<>uid://mn44tsps2rnx::::res://player/opponent.tscn<>uid://cf1a13d55avl::::res://ball/ball.tscn
+timer.gd::GDScript::-1::1725662707::0::1::::<>Timer<>::
+viewport.tscn::PackedScene::3762064617019738137::1725690665::0::1::::<><>::uid://dnu5oauph2tae::::res://level/level.tscn
+::res://player/::1725910955
+opponent.gd::GDScript::-1::1725442566::0::1::::<>CharacterBody2D<>::
+opponent.tscn::PackedScene::870916641729434093::1725442566::0::1::::<><>::uid://xcgeak8bgkyw::::res://Assets/Paddle.png<>res://player/opponent.gd
+player3D.gd::GDScript::-1::1725689231::0::1::::<>CharacterBody3D<>::
+player.gd::GDScript::-1::1725860571::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::6649714704479186405::1725910955::0::1::::<><>::res://player/player.gd<>uid://xcgeak8bgkyw::::res://Assets/Paddle.png<>res://player/player_animations.gd
+player_3d.tscn::PackedScene::1261224015252194822::1725689626::0::1::::<><>::uid://xcgeak8bgkyw::::res://Assets/Paddle.png
+player_airpump.gd::GDScript::-1::1725443272::0::1::::<>CharacterBody2D<>::
+player_airpump.tscn::PackedScene::4934171872052920395::1725475666::0::1::::<><>::res://player/player_airpump.gd<>uid://xcgeak8bgkyw::::res://Assets/Paddle.png<>uid://du1ja2up0s6u7::::res://Assets/bubble.webp
+player_animations.gd::GDScript::-1::1725855892::0::1::::<>AnimationPlayer<>::
+::res://UI/::1725910955
+Global.gd::GDScript::-1::1725854355::0::1::::<>Node<>::
+score.gd::GDScript::-1::1725855368::0::1::::<>Label<>::
+ui.tscn::PackedScene::5755356675503526951::1725910955::0::1::::<><>::uid://hiq0cq7pu5yy::::res://Assets/Fonts/american_captain/American Captain.otf<>res://UI/score.gd<>uid://d37cff8yy76o::::res://Assets/Ball.png<>uid://dovu8wdcm8wj::::res://Assets/star.png

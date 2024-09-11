@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://btumwiykuns8h"]
+
+[ext_resource type="PackedScene" uid="uid://dnu5oauph2tae" path="res://level/level.tscn" id="1_5u8c1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_edl3d"]
+viewport_path = NodePath("Node3D")
+
+[node name="viewport" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+projection = 1
+size = 7.2
+
+[node name="Node3D" type="SubViewport" parent="."]
+size = Vector2i(1280, 720)
+
+[node name="Level" parent="Node3D" instance=ExtResource("1_5u8c1")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_edl3d")

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bcvih6jwhouh8"
+path="res://.godot/imported/Manta ray.obj-8deb7d8476c451da6fee225ebbc754a0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Manta ray.obj-8deb7d8476c451da6fee225ebbc754a0.mesh"]
+
+source_file="res://Assets/obj/Manta ray.obj"
+dest_files=["res://.godot/imported/Manta ray.obj-8deb7d8476c451da6fee225ebbc754a0.mesh", "res://.godot/imported/Manta ray.obj-8deb7d8476c451da6fee225ebbc754a0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
