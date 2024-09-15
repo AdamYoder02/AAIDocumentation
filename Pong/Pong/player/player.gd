@@ -2,7 +2,12 @@ extends CharacterBody2D
 
 signal state_changed(state)
 
-var speed: float = 400
+@export_range(300, 1000) var speed: float = 400
+@export_range(10, 300) var mouse_speed: float = 100
+@export_range(1, 10) var minimum_mouse_motion = 10
+var mouse_velocity: Vector2 = Vector2.ZERO
+
+
 var lock_position: float
 
 var fish_on_hook
@@ -15,10 +20,9 @@ var is_fish_caught := false
 
 func _ready():
 	lock_position = position.x
+	Input.mouse_mode = 2
 
 func _physics_process(delta: float) -> void:
-	
-	
 	# if fish is caught set state
 	if state == States.CAUGHT:
 		state_changed.emit("caught_animation")
@@ -40,15 +44,28 @@ func _physics_process(delta: float) -> void:
 		
 	
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed("Up"):
-		velocity.y -= 1 * speed
-	if Input.is_action_pressed("Down"):
-		velocity.y += 1 * speed
+	
+	_keyboard_input()
+	_input(Input.MOUSE_MODE_CAPTURED)
+	mouse_velocity = Vector2.ZERO
 	
 	if state in [States.IDLE, States.MOVING]:
 		move_and_slide()
 	
 	position.x = lock_position
+
+func _keyboard_input():
+	if Input.is_action_pressed("Up") or Input.is_action_just_released("Up"):
+		velocity.y -= 1 * speed
+	elif Input.is_action_pressed("Down") or Input.is_action_just_released("Down"):
+		velocity.y += 1 * speed
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		mouse_velocity = event.get_screen_relative()
+		#print("Mouse Input Captured")
+	
+	velocity.y += mouse_velocity.y * mouse_speed
 
 # detects when a ball hits the paddle
 func _on_player_detection_body_entered(body: Node2D) -> void:

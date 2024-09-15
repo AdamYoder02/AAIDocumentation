@@ -1,11 +1,5 @@
-res://player/player_animations.gd
 res://level/level.tscn
-res://level/level.gd
-res://player/player.gd
 res://player/player.tscn
 res://ball/ball.tscn
-res://ball/ball.gd
-res://Global.gd
-res://score.gd
-res://ui.tscn
 res://UI/ui.tscn
+res://player/player.gd
