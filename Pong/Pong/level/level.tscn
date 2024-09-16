@@ -38,8 +38,6 @@ offset_bottom = 10.0
 [node name="Player" parent="." instance=ExtResource("1_85odk")]
 collision_layer = 2
 collision_mask = 2
-mouse_speed = 10.0
-minimum_mouse_motion = 3
 
 [node name="PlayerDetection" type="Area2D" parent="Player"]
 collision_layer = 2

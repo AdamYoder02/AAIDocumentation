@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
 	_keyboard_input()
-	_input(Input.MOUSE_MODE_CAPTURED)
+	#_input(Input.MOUSE_MODE_CAPTURED)
 	mouse_velocity = Vector2.ZERO
 	
 	if state in [States.IDLE, States.MOVING]:
@@ -73,7 +73,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 		fish_on_hook = body
 		state = States.CAUGHT
 		#print("FISH DETECTED")
-		body.reparent(self)
+		body.call_deferred("reparent", self)
 		body.disabled = true
 
 func _delete_ball() -> void:

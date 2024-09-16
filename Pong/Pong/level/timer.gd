@@ -1,7 +1,7 @@
 extends Timer
 
 var time: float = 0.3
-var timer_array: Array = [0.1,0.2,0.3,0.4,0.5]
+var timer_array: Array = [0.5,0.75,1]
 
 func _ready() -> void:
 	time = timer_array[randi() % timer_array.size()]
