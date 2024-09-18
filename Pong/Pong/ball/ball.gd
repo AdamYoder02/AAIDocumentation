@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-@onready var sprite := $Sprite2D
-@onready var star := "res://Assets/star.png"
+@onready var fish1 := $fish1
+@onready var fish2 := $fish2
+@onready var fish3 := $fish3
+@onready var fish4 := $fish4
+@onready var fish5 := $fish5
+@onready var fish6 := $fish6
 
 var disabled = false
 
@@ -23,7 +27,6 @@ var wave_width: int = 1
 var wave_offset: int = 345
 
 var ball_size: float = 1
-var ball_rarity: int = 1
 var ball_type: int = 1
 
 var score: int = 100
@@ -33,40 +36,33 @@ func _ready():
 	var rng := RandomNumberGenerator.new()
 	
 	#small chance for rare balls
-	ball_rarity = rng.randi_range(1, 100)
-	
-	# 1 > common  2 > uncommon  3 > rare  4 > legendary
-	if ball_rarity >= 1 and ball_rarity < 50:
-		ball_type = 1
-	elif ball_rarity >= 50 and ball_rarity < 80:
-		ball_type = 2
-	elif ball_rarity >= 80 and ball_rarity < 99:
-		ball_type = 3
-	elif ball_rarity >= 99 and ball_rarity <= 100:
-		ball_type = 4
+	ball_type = rng.randi_range(1, 6)
 
 	
 	# change appearance for each rarity
 	match ball_type:
 		1:
-			pass
+			fish1.set_visible(true)
+			score = 100
 		2:
-			sprite.self_modulate = Color(0.5,0,1)
-			score = 500
+			fish2.set_visible(true)
+			score = -500
 		3:
-			sprite.self_modulate = Color(0,1,0)
-			score = 1000
+			fish3.set_visible(true)
+			score = 400
 		4:
-			var img = Image.new()
-			img.load(star)
-			sprite.texture = ImageTexture.create_from_image(img)
-			sprite.scale.x = 0.25
-			sprite.scale.y = 0.25
-			score = 10000
+			fish4.set_visible(true)
+			score = 300
+		5:
+			fish5.set_visible(true)
+			score = 200
+		6:
+			fish6.set_visible(true)
+			score = 500
 		
 	
 	# randomize ball size
-	ball_size = rng.randf_range(0.5, 1)
+	ball_size = rng.randf_range(1, 2)
 
 	var ball_size_vector := Vector2.ZERO
 	ball_size_vector.x = ball_size

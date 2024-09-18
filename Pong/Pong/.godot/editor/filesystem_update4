@@ -2,3 +2,13 @@ res://player/player.tscn
 res://ball/ball.tscn
 res://UI/ui.tscn
 res://player/player.gd
+res://UI/score.gd
+res://ball/fish_anim_player.gd
+res://ball/fish2_anim_player.gd
+res://ball/ball.gd
+res://ball/fish3_anim_player.gd
+res://ball/fish4_anim_player.gd
+res://ball/fish5_anim_player.gd
+res://ball/fish6_anim_player.gd
+res://UI/Global.gd
+res://UI/time.gd

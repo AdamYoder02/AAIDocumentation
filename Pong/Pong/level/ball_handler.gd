@@ -5,7 +5,7 @@ var ball_scene
 func _ready():
 	ball_scene = preload("res://ball/ball.tscn")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Spawn Ball"):
 		_spawn_ball()
 

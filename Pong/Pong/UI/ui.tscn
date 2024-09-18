@@ -1,17 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn865boekh2r8"]
+[gd_scene load_steps=16 format=3 uid="uid://cn865boekh2r8"]
 
 [ext_resource type="FontFile" uid="uid://hiq0cq7pu5yy" path="res://Assets/Fonts/american_captain/American Captain.otf" id="1_4lnv2"]
 [ext_resource type="Script" path="res://UI/score.gd" id="1_svq47"]
-[ext_resource type="Texture2D" uid="uid://d37cff8yy76o" path="res://Assets/Ball.png" id="3_7y2fh"]
-[ext_resource type="Texture2D" uid="uid://dovu8wdcm8wj" path="res://Assets/star.png" id="4_0qjl2"]
+[ext_resource type="Texture2D" uid="uid://d21xq05kpbys7" path="res://Assets/coin.png" id="5_cmoqc"]
+[ext_resource type="Texture2D" uid="uid://dwjxm0rl8rjh7" path="res://Assets/sign_small.png" id="5_d52wd"]
+[ext_resource type="Texture2D" uid="uid://nt6k6lgax03k" path="res://Assets/fish/1/Hurt.png" id="6_8oxub"]
+[ext_resource type="Texture2D" uid="uid://c72di6067kdw6" path="res://Assets/fish/2/Hurt.png" id="7_d14i6"]
+[ext_resource type="Texture2D" uid="uid://tt4b6j0r0vbj" path="res://Assets/fish/3/Hurt.png" id="8_ytwa3"]
+[ext_resource type="Texture2D" uid="uid://du7bga61bheep" path="res://Assets/fish/4/Hurt.png" id="9_tqiyo"]
+[ext_resource type="Texture2D" uid="uid://cewyled5b2awd" path="res://Assets/fish/5/Hurt.png" id="10_ef4i3"]
+[ext_resource type="Script" path="res://UI/time.gd" id="11_p6tnt"]
+[ext_resource type="Texture2D" uid="uid://ct8sbruh0nh23" path="res://Assets/fish/6/Hurt.png" id="11_yeotr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fteeo"]
 font = ExtResource("1_4lnv2")
 font_size = 80
 
+[sub_resource type="LabelSettings" id="LabelSettings_pjgmf"]
+font = ExtResource("1_4lnv2")
+font_size = 38
+
 [sub_resource type="LabelSettings" id="LabelSettings_mwlxd"]
 font = ExtResource("1_4lnv2")
-font_size = 32
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mdg3"]
+font = ExtResource("1_4lnv2")
+font_size = 80
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -19,41 +34,225 @@ anchors_preset = 0
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 127.0
-offset_right = 372.0
-offset_bottom = 80.0
+offset_left = 643.0
+offset_top = 6.0
+offset_right = 888.0
+offset_bottom = 86.0
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_fteeo")
 script = ExtResource("1_svq47")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 6.0
-offset_right = 108.0
-offset_bottom = 143.0
-text = "100
-500
-1000
-10000"
-label_settings = SubResource("LabelSettings_mwlxd")
+[node name="fish2" type="Sprite2D" parent="."]
+position = Vector2(691, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish2"]
+position = Vector2(0, -36)
+scale = Vector2(4, 4)
+texture = ExtResource("7_d14i6")
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish2"]
+offset_left = -80.0
+offset_top = 4.0
+offset_right = 74.0
+offset_bottom = 52.0
+text = "ENDANGERED"
+label_settings = SubResource("LabelSettings_pjgmf")
+horizontal_alignment = 1
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Label"]
-position = Vector2(-24, 12)
-texture = ExtResource("3_7y2fh")
+[node name="Label3" type="Label" parent="fish2"]
+offset_left = -58.0
+offset_top = 36.0
+offset_right = 72.0
+offset_bottom = 84.0
+text = "-500"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Label"]
-self_modulate = Color(0.5, 0, 1, 1)
-position = Vector2(-24, 46)
-texture = ExtResource("3_7y2fh")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Label"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(-24, 81)
-texture = ExtResource("3_7y2fh")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Label"]
-position = Vector2(-24, 116)
+[node name="Sprite2D2" type="Sprite2D" parent="fish2"]
+position = Vector2(-46, 54)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_0qjl2")
+texture = ExtResource("5_cmoqc")
+
+[node name="fish1" type="Sprite2D" parent="."]
+position = Vector2(794, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish1"]
+position = Vector2(0, -36)
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("6_8oxub")
+flip_v = true
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish1"]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 83.0
+text = "100"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish1"]
+position = Vector2(-56, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish1"]
+position = Vector2(52, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="fish5" type="Sprite2D" parent="."]
+position = Vector2(897, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish5"]
+position = Vector2(8, -36)
+scale = Vector2(4, 4)
+texture = ExtResource("10_ef4i3")
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish5"]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 83.0
+text = "200"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish5"]
+position = Vector2(-56, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish5"]
+position = Vector2(52, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="fish4" type="Sprite2D" parent="."]
+position = Vector2(1000, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish4"]
+position = Vector2(14, -36)
+scale = Vector2(4, 4)
+texture = ExtResource("9_tqiyo")
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish4"]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 83.0
+text = "300"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish4"]
+position = Vector2(-56, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish4"]
+position = Vector2(52, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="fish3" type="Sprite2D" parent="."]
+position = Vector2(1102, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish3"]
+position = Vector2(4, -36)
+scale = Vector2(4, 4)
+texture = ExtResource("8_ytwa3")
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish3"]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 83.0
+text = "400"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish3"]
+position = Vector2(-56, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish3"]
+position = Vector2(52, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="fish6" type="Sprite2D" parent="."]
+position = Vector2(1205, 131)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d52wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish6"]
+position = Vector2(12, -36)
+scale = Vector2(4, 4)
+texture = ExtResource("11_yeotr")
+hframes = 2
+
+[node name="Label2" type="Label" parent="fish6"]
+offset_left = -66.0
+offset_top = 35.0
+offset_right = 64.0
+offset_bottom = 83.0
+text = "500"
+label_settings = SubResource("LabelSettings_mwlxd")
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish6"]
+position = Vector2(-56, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish6"]
+position = Vector2(52, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_cmoqc")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 6.0
+offset_right = 232.0
+offset_bottom = 86.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_7mdg3")
+script = ExtResource("11_p6tnt")
+
+[node name="Timer" type="Timer" parent="Time"]
+wait_time = 60.0
+one_shot = true
+autostart = true

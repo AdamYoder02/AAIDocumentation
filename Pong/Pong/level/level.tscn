@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnu5oauph2tae"]
+[gd_scene load_steps=12 format=3 uid="uid://dnu5oauph2tae"]
 
 [ext_resource type="PackedScene" uid="uid://c10f3hcpsvg2p" path="res://player/player.tscn" id="1_85odk"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_pcv7h"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cf1a13d55avl" path="res://ball/ball.tscn" id="3_b2fku"]
 [ext_resource type="Script" path="res://level/ball_handler.gd" id="4_1rleo"]
 [ext_resource type="Script" path="res://level/timer.gd" id="5_x5pqi"]
+[ext_resource type="Texture2D" uid="uid://coapc8fbqr52c" path="res://Assets/line.png" id="7_txiqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbaor"]
 size = Vector2(30, 36)
@@ -15,6 +16,15 @@ size = Vector2(1336, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kpb0"]
 size = Vector2(92, 718)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hsaa1"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-500, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 500, 1)
+direction = Vector3(50, 0, 0)
+gravity = Vector3(500, 0, 0)
+scale_max = 2.0
 
 [node name="Level" type="Node"]
 script = ExtResource("1_pcv7h")
@@ -28,12 +38,6 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.129412, 0.14902, 1)
-
-[node name="UI" parent="." instance=ExtResource("2_4bp4w")]
-offset_left = 704.0
-offset_top = 10.0
-offset_right = 704.0
-offset_bottom = 10.0
 
 [node name="Player" parent="." instance=ExtResource("1_85odk")]
 collision_layer = 2
@@ -83,6 +87,20 @@ collision_layer = 2
 wait_time = 0.3
 autostart = true
 script = ExtResource("5_x5pqi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.494118, 1, 1, 0.101961)
+position = Vector2(5, 372)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_hsaa1")
+texture = ExtResource("7_txiqi")
+lifetime = 3.0
+
+[node name="UI" parent="." instance=ExtResource("2_4bp4w")]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
 
 [connection signal="body_entered" from="Player/PlayerDetection" to="Player" method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="Ball Handler/Timer" to="Ball Handler" method="_on_timer_timeout"]

@@ -1,18 +1,311 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf1a13d55avl"]
+[gd_scene load_steps=30 format=3 uid="uid://cf1a13d55avl"]
 
 [ext_resource type="Texture2D" uid="uid://d37cff8yy76o" path="res://Assets/Ball.png" id="1_0lr7n"]
 [ext_resource type="Script" path="res://ball/ball.gd" id="1_h4h72"]
+[ext_resource type="Texture2D" uid="uid://du1ja2up0s6u7" path="res://Assets/bubble.webp" id="3_66hf0"]
+[ext_resource type="Texture2D" uid="uid://d2xnxb8h7dckp" path="res://Assets/fish/1/Walk.png" id="4_jlvvl"]
+[ext_resource type="Script" path="res://ball/fish_anim_player.gd" id="5_1vvkh"]
+[ext_resource type="Texture2D" uid="uid://bmrjnyficx84e" path="res://Assets/fish/2/Walk.png" id="6_l6mjk"]
+[ext_resource type="Script" path="res://ball/fish2_anim_player.gd" id="7_k24uy"]
+[ext_resource type="Texture2D" uid="uid://t140dxbqupxg" path="res://Assets/fish/3/Walk.png" id="8_x867a"]
+[ext_resource type="Script" path="res://ball/fish3_anim_player.gd" id="9_xgpn4"]
+[ext_resource type="Texture2D" uid="uid://b1mjpownrp3uq" path="res://Assets/fish/4/Walk.png" id="10_psnmr"]
+[ext_resource type="Script" path="res://ball/fish4_anim_player.gd" id="11_ndxh5"]
+[ext_resource type="Texture2D" uid="uid://cnudmvxdqlnoq" path="res://Assets/fish/5/Walk.png" id="12_7brf5"]
+[ext_resource type="Script" path="res://ball/fish5_anim_player.gd" id="13_p51rt"]
+[ext_resource type="Texture2D" uid="uid://deioooxf8cnat" path="res://Assets/fish/6/Walk.png" id="14_8mra4"]
+[ext_resource type="Script" path="res://ball/fish6_anim_player.gd" id="15_xax37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dpvfw"]
-radius = 32.0
+radius = 16.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1gj6"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+angle_min = -275.9
+angle_max = 222.1
+inherit_velocity_ratio = 0.5
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 15.0
+gravity = Vector3(0, -100, 0)
+scale_min = 0.01
+scale_max = 0.02
+
+[sub_resource type="Animation" id="Animation_nijqg"]
+resource_name = "fish_anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fish1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_rp0t4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fish1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fish2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8by6k"]
+resource_name = "fish2_anim"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fish2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gepl"]
+_data = {
+"RESET": SubResource("Animation_rp0t4"),
+"fish2_anim": SubResource("Animation_8by6k"),
+"fish_anim": SubResource("Animation_nijqg")
+}
+
+[sub_resource type="Animation" id="Animation_hfdr7"]
+resource_name = "fish3_anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_hhm5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_236mq"]
+resource_name = "fish4_anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_j5iah"]
+resource_name = "fish5_anim"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epgpn"]
+_data = {
+"RESET": SubResource("Animation_hhm5w"),
+"fish3_anim": SubResource("Animation_hfdr7"),
+"fish4_anim": SubResource("Animation_236mq"),
+"fish5_anim": SubResource("Animation_j5iah")
+}
+
+[sub_resource type="Animation" id="Animation_7jdpf"]
+resource_name = "fish6_anim"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_6svoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oygyt"]
+_data = {
+"RESET": SubResource("Animation_6svoq"),
+"fish6_anim": SubResource("Animation_7jdpf")
+}
 
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_h4h72")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_0lr7n")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dpvfw")
 one_way_collision_margin = 50.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_f1gj6")
+texture = ExtResource("3_66hf0")
+lifetime = 3.0
+randomness = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_0lr7n")
+
+[node name="fish1" type="Sprite2D" parent="."]
+visible = false
+rotation = -1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_jlvvl")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish1"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0gepl")
+}
+script = ExtResource("5_1vvkh")
+
+[node name="fish2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("6_l6mjk")
+flip_h = true
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish2"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0gepl")
+}
+script = ExtResource("7_k24uy")
+
+[node name="fish3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("8_x867a")
+flip_h = true
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish3"]
+libraries = {
+"": SubResource("AnimationLibrary_epgpn")
+}
+script = ExtResource("9_xgpn4")
+
+[node name="fish4" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("10_psnmr")
+flip_h = true
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish4"]
+libraries = {
+"": SubResource("AnimationLibrary_epgpn")
+}
+script = ExtResource("11_ndxh5")
+
+[node name="fish5" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("12_7brf5")
+flip_h = true
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish5"]
+libraries = {
+"": SubResource("AnimationLibrary_epgpn")
+}
+script = ExtResource("13_p51rt")
+
+[node name="fish6" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("14_8mra4")
+flip_h = true
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fish6"]
+libraries = {
+"": SubResource("AnimationLibrary_oygyt")
+}
+script = ExtResource("15_xax37")

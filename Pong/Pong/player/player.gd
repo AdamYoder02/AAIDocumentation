@@ -22,7 +22,7 @@ func _ready():
 	lock_position = position.x
 	Input.mouse_mode = 2
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# if fish is caught set state
 	if state == States.CAUGHT:
 		state_changed.emit("caught_animation")
